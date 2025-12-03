@@ -7,7 +7,7 @@ export default function HeaderNav() {
         <h1 className="font-bold text-blue-500">HRMS</h1>
         <h2>Techon IT Solution</h2>
       </div>
-      <div>search</div>
+
       <div className="flex items-center gap-10">
         <BellRing size={21} />
         <div className="flex gap-3 items-center">
