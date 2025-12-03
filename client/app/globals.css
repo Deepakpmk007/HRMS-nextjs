@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
 @theme {
-    --font-header: "Anton", sans-serif;
-    --color-blue: #4361ee;
     --breakpoint-xs: 360px; /* small phones */
     --breakpoint-sm: 480px; /* phones */
     --breakpoint-md: 768px; /* tablets */
