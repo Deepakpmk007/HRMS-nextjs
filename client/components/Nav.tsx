@@ -1,6 +1,13 @@
 "use client";
 
-import { Calendar, CalendarDays, LayoutDashboard, User, X } from "lucide-react";
+import {
+  Calendar,
+  CalendarDays,
+  DollarSign,
+  Home,
+  LayoutDashboard,
+  User,
+} from "lucide-react";
 import Link from "next/link";
 import DropDown from "./reusableComponents/DropDown";
 
@@ -8,10 +15,7 @@ export default function Nav() {
   return (
     <div className="min-w-56 h-[93.3vh]  bg-red-300 flex flex-col justify-between p-4">
       <div>
-        <p>
-          <X size={28} />
-        </p>
-        <nav className="mt-8">
+        <nav className="mt-2">
           <ul className="flex flex-col gap-5">
             <li>
               <Link href={"/"} className="flex items-center gap-2 font-light">
@@ -23,7 +27,7 @@ export default function Nav() {
                 label="Employees"
                 Icon={User}
                 items={[
-                  { label: "All Employees", href: "/employees" },
+                  { label: "All Employees", href: "/employees/list" },
                   { label: "Add Employee", href: "/employees/add" },
                 ]}
               />
@@ -45,6 +49,27 @@ export default function Nav() {
                 items={[
                   { label: "Leave list", href: "/leave/list" },
                   { label: "Approve leave", href: "/leave/approve" },
+                ]}
+              />
+            </li>
+            <li>
+              <DropDown
+                label="Payroll"
+                Icon={DollarSign}
+                items={[
+                  { label: "Payroll list", href: "/payroll/list" },
+                  { label: "Generate Payslip", href: "/payroll/generate" },
+                  { label: "Payroll  Report", href: "/payroll/report" },
+                ]}
+              />
+            </li>
+            <li>
+              <DropDown
+                label="Departments"
+                Icon={Home}
+                items={[
+                  { label: "Departments list", href: "/department/list" },
+                  { label: "Add Departments", href: "/department/add" },
                 ]}
               />
             </li>
