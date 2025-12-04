@@ -25,7 +25,7 @@ export default function DropDown({ label, Icon, items }: DropDownProps) {
       {/* Header */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex gap-2 justify-between items-center w-full"
+        className="flex gap-2 justify-between items-center w-full cursor-pointer"
       >
         <div className="flex items-center gap-2">
           <Icon size={23} />
