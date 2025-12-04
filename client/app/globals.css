@@ -8,3 +8,7 @@
     --breakpoint-xl: 1280px; /* standard desktops */
     --breakpoint-2xl: 1536px; /* large desktops / wide screens */
 }
+
+.table-head {
+    @apply p-4 font-medium text-lg tracking-wider text-start;
+}
