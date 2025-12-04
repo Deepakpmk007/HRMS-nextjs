@@ -1,9 +1,10 @@
-import { Plus } from "lucide-react";
+import EmployeeSearchBar from "@/components/EmployeeSearchBar";
+import TableEmployeeList from "@/components/Table/TableEmployeeList";
 
 export default function Page() {
   return (
-    <div className="w-full ">
-      <section className="w-full flex justify-between p-4">
+    <div className="w-full p-4 flex flex-col gap-5">
+      <section className="w-full flex justify-between">
         <div>
           <h1 className="text-3xl font-bold">Employesss</h1>
           <p className="text-xl">
@@ -11,11 +12,10 @@ export default function Page() {
             Manage your team members and their information
           </p>
         </div>
-        <button className="flex gap-3 items-center bg-blue-500 px-5 rounded-sm text-white cursor-pointer hover:bg-blue-400 transition-all">
-          <Plus size={20} />
-          <span className="text-lg font-bold tracking-wide">Add Employee</span>
-        </button>
       </section>
+      <EmployeeSearchBar>
+        <TableEmployeeList />
+      </EmployeeSearchBar>
     </div>
   );
 }
