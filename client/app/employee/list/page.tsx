@@ -1,7 +1,17 @@
 import EmployeeSearchBar from "@/components/EmployeeSearchBar";
 import TableEmployeeList from "@/components/Table/TableEmployeeList";
+import { Suspense } from "react";
+type searchParamsT = {
+  dept?: string;
+  status?: string;
+  search?: string;
+};
 
-export default function Page() {
+export default function Page({
+  searchParams,
+}: {
+  searchParams: Promise<searchParamsT>;
+}) {
   return (
     <div className="w-full p-4 flex flex-col gap-5">
       <section className="w-full flex justify-between">
@@ -13,9 +23,11 @@ export default function Page() {
           </p>
         </div>
       </section>
-      <EmployeeSearchBar>
-        <TableEmployeeList />
-      </EmployeeSearchBar>
+      <Suspense fallback={<p>loading....</p>}>
+        <EmployeeSearchBar>
+          <TableEmployeeList searchParams={searchParams} />
+        </EmployeeSearchBar>
+      </Suspense>
     </div>
   );
 }

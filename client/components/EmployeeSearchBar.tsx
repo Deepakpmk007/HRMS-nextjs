@@ -22,24 +22,24 @@ export default function EmployeeSearchBar({
 
   return (
     <>
-      <form className="flex gap-5">
+      <div className="flex gap-5">
         <input
           type="text"
           placeholder="Search Name ,Email ........"
           className="border border-s-stone-500 flex-1 px-2 py-1 outline-none rounded"
-          onChange={(e) => updateFilter("name", e.target.value)}
+          onChange={(e) => updateFilter("search", e.target.value)}
         />
         <div className="flex gap-5">
           <select
             id="dept"
             className="border-s-stone-500 border px-2 outline-none rounded"
-            onChange={(e) => updateFilter("dept", e.target.value)}
+            onChange={(e) => updateFilter("department", e.target.value)}
           >
             <option value="">All Departments</option>
-            <option value="it">IT</option>
-            <option value="hr">HR</option>
+            <option value="IT">IT</option>
+            <option value="HR">HR</option>
             <option value="finance">Finance</option>
-            <option value="marketing">marketing</option>
+            <option value="Marketing">Marketing</option>
           </select>
           <select
             id="status"
@@ -52,7 +52,7 @@ export default function EmployeeSearchBar({
             <option value="inActive">In Active</option>
           </select>
         </div>
-      </form>
+      </div>
       <section>{children}</section>
     </>
   );
