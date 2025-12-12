@@ -23,6 +23,25 @@ class APIFeatures {
         // Convert string back to object
         this.filterQuery = JSON.parse(queryStr);
 
+        // 🔎 Custom search
+        if (this.queryString.search) {
+            this.filterQuery.$or = [
+                {
+                    firstName: {
+                        $regex: this.queryString.search,
+                        $options: 'i',
+                    },
+                },
+                {
+                    lastName: {
+                        $regex: this.queryString.search,
+                        $options: 'i',
+                    },
+                },
+                { email: { $regex: this.queryString.search, $options: 'i' } },
+            ];
+        }
+
         // Apply to mongoose query
         this.query = this.query.find(this.filterQuery);
 
@@ -61,4 +80,3 @@ class APIFeatures {
 }
 
 module.exports = APIFeatures;
-

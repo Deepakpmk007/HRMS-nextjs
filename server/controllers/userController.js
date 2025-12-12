@@ -1,8 +1,14 @@
 const UserModel = require('../model/user_model');
 const catchAsync = require('../utils/catchAsync');
+const APIFeatures = require('../utils/apiFetures');
 
 exports.getAllUser = catchAsync(async (req, res) => {
-    const userData = await UserModel.find();
+    const feature = new APIFeatures(UserModel.find(), req.query)
+        .filter()
+        .sort()
+        .limitFields()
+        .paginate();
+    const userData = await feature.query;
     res.status(200).json({
         message: 'Ok',
         length: userData.length,
