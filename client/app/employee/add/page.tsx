@@ -13,11 +13,9 @@ const EmployeeSchema = z.object({
   email: z.string().email("Invalid email"),
   phonenumber: z
     .string()
-    .length(10, "Phone number must be 10 digits")
-    .regex(/^[0-9]+$/, "Only numbers allowed"),
-  dob: z.string().refine((v) => !isNaN(Date.parse(v)), {
-    message: "Invalid date",
-  }),
+    .min(10, "Phone number must be 10 digits")
+    .max(10, "Phone number must be 10 digits"),
+  dob: z.string(),
   gender: z.enum(["male", "female", "other"], {
     message: "Select a gender",
   }),
@@ -27,15 +25,14 @@ const EmployeeSchema = z.object({
   state: z.string().min(2, "State is required"),
   pincode: z
     .string()
-    .length(6, "Pincode must be 6 digits")
-    .regex(/^[0-9]+$/, "Only numbers allowed"),
+    .min(1, "Pincode must be 6 digits")
+    .max(6, "Pincode must be 6 digits"),
   department: z.enum(["IT", "HR", "Marketing"]),
   position: z.string().min(1, "Position required"),
-  joiningDate: z.string().refine((v) => !isNaN(Date.parse(v)), {
-    message: "Invalid date",
-  }),
+  joiningDate: z.string().min(1, "Joining date required"),
+  status: z.string().min(1, "Status required"),
   employmentType: z.string().min(1, "Employment type is required"),
-  salary: z.number().min(1, "Salary is required"),
+  salary: z.string(),
   reportingManager: z.string().min(1, "Reporting Manager required"),
 });
 
@@ -243,8 +240,8 @@ export default function Page() {
                 className="border-gray-400 border active:shadow shadow-gray-400 px-3 py-2 rounded focus:outline-none focus:ring"
               >
                 <option value="">Select</option>
-                <option value="it">IT</option>
-                <option value="hr">HR</option>
+                <option value="IT">IT</option>
+                <option value="HR">HR</option>
                 <option value="marketing">Marketing</option>
               </select>
               {errors.department && (
@@ -299,8 +296,7 @@ export default function Page() {
             <div className="flex flex-col gap-1">
               <label>Salary</label>
               <input
-                type="number"
-                {...register("salary", { valueAsNumber: true })}
+                {...register("salary")}
                 className="border-gray-400 border active:shadow shadow-gray-400 px-3 py-2 rounded focus:outline-none focus:ring"
               />
               {errors.salary && (

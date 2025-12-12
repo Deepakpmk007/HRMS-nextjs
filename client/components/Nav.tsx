@@ -13,7 +13,7 @@ import DropDown from "./reusableComponents/DropDown";
 
 export default function Nav() {
   return (
-    <div className="min-w-56 h-[93.3vh]  bg-red-300 flex flex-col justify-between p-4">
+    <div className="min-w-56 h-[93.3vh]  bg-blue-50 flex flex-col justify-between p-4">
       <div>
         <nav className="mt-2">
           <ul className="flex flex-col gap-5">
@@ -27,8 +27,8 @@ export default function Nav() {
                 label="Employees"
                 Icon={User}
                 items={[
-                  { label: "All Employees", href: "/employees/list" },
-                  { label: "Add Employee", href: "/employees/add" },
+                  { label: "All Employees", href: "/employee/list" },
+                  { label: "Add Employee", href: "/employee/add" },
                 ]}
               />
             </li>
